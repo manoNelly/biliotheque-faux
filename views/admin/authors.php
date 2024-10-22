@@ -20,8 +20,8 @@
                 <td><?= $author['name'] ?></td>
                 <td><?= $author['bio'] ?></td>
                 <td>
-                    <a href="edit_author.php?id=<?= $author['id'] ?>">Modifier</a>
-                    <a href="delete_author.php?id=<?= $author['id'] ?>">Supprimer</a>
+                    <a href="/bibliotheque_app/public/admin/authors/edit/<?= $author['id']?>">Modifier</a>
+                    <a href="/bibliotheque_app/public/admin/authors/delete/<?= $author['id']?>">Supprimer</a>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -31,3 +31,4 @@
         
     </body>
 </html>
+

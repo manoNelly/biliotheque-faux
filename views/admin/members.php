@@ -22,8 +22,8 @@
                 <td><?= $member['email'] ?></td>
                 <td><?= $member['registration_date'] ?></td>
                 <td>
-                    <a href="edit_member.php?id=<?= $member['id'] ?>">Modifier</a>
-                    <a href="delete_member.php?id=<?= $member['id'] ?>">Supprimer</a>
+                    <a href="/bibliotheque_app/public/admin/members/edit/<?= $member['id']?>">Modifier</a>
+                    <a href="/bibliotheque_app/public/admin/members/delete/<?= $member['id']?>">Supprimer</a>
                 </td>
             </tr>
             <?php endforeach; ?>
