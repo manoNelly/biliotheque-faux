@@ -1,0 +1,74 @@
+Voici un récapitulatif mis à jour de l'état actuel du projet de gestion de bibliothèque, incluant la structure correcte des fichiers :
+
+### État Actuel du Projet
+
+#### 1. Structure de la Base de Données
+- **Table : books**
+  - id (INT, PK)
+  - title (VARCHAR)
+  - author_id (INT, FK vers authors.id)
+  - genre (VARCHAR)
+  - published_year (YEAR)
+
+- **Table : authors**
+  - id (INT, PK)
+  - name (VARCHAR)
+  - bio (TEXT)
+
+- **Table : members**
+  - id (INT, PK)
+  - name (VARCHAR)
+  - email (VARCHAR)
+  - registration_date (DATE)
+
+- **Table : loans**
+  - id (INT, PK)
+  - book_id (INT, FK vers books.id)
+  - member_id (INT, FK vers members.id)
+  - loan_date (DATE)
+  - return_date (DATE)
+
+#### 2. Structure des Fichiers
+- **public/**
+  - index.php (point d'entrée de l'application)
+  - .htaccess
+
+- **controllers/**
+  - BookController.php
+  - AuthorController.php
+  - MemberController.php
+
+- **models/**
+  - Book.php
+  - Author.php
+  - Member.php
+
+- **views/**
+  - books.php (liste des livres)
+  - edit_book.php (formulaire d'édition pour les livres)
+  - authors.php (liste des auteurs)
+  - edit_author.php (formulaire d'édition pour les auteurs)
+  - members.php (liste des membres)
+  - edit_member.php (formulaire d'édition pour les membres)
+  - add_book.php (formulaire d'ajout de livre)
+  - add_author.php (formulaire d'ajout d'auteur)
+  - add_member.php (formulaire d'ajout de membre)
+
+#### 3. Fonctionnalités Développées
+- Affichage de la liste des livres, auteurs et membres.
+- Formulaires pour ajouter et modifier les informations des livres, auteurs et membres.
+- Suppression de livres, auteurs et membres.
+- Système de routage pour naviguer entre les différentes sections de l'administration.
+
+#### 4. Points à Tester
+- Vérification des fonctionnalités d'ajout, d'édition et de suppression pour les livres, auteurs et membres.
+- Validation des données dans les formulaires.
+
+### Prompt pour Rappeler l'État du Projet
+Quand tu souhaiteras rappeler l'état du projet dans une autre conversation, tu peux utiliser le prompt suivant :
+
+```
+Peux-tu me rappeler l'état du projet de gestion de bibliothèque ? J'ai besoin de détails sur la structure de la base de données, la structure des fichiers, les fonctionnalités développées et les points à tester. Je veux aussi savoir quelles fonctionnalités doivent encore être mises en place et les éventuels problèmes rencontrés.
+```
+
+N'hésite pas à revenir quand tu es prêt à continuer !
