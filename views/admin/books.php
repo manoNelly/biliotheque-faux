@@ -33,4 +33,4 @@ $books = $bookModel->findAll();
     <?php endforeach; ?>
 </table>
 <a href="/bibliotheque_app/public/admin/books/create">Ajouter un Livre</a>
-<h1>Modification à annuler avec git</h1>
+
