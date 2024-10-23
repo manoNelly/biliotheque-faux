@@ -42,6 +42,41 @@ class MemberController {
         header('Location: /bibliotheque_app/public/admin/members');
         exit;
     }
+
+    //--------Fontionnalité concernant le système d'inscription et de connexion des membres-----
+
+    public function register() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hashage du mot de passe
+            $this->memberModel->create($name, $email, $password); // Utilisation de la méthode mise à jour
+            header('Location: /bibliotheque_app/public/members/login');
+            exit;
+        }
+        include '../views/members/register.php';
+    }
+    
+    
+    public function login() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $member = $this->memberModel->findByEmail($email);
+            if ($member && password_verify($password, $member['password'])) {
+                // Démarrer la session et rediriger
+                session_start();
+                $_SESSION['member_id'] = $member['id'];
+                header('Location: /bibliotheque_app/public/members/dashboard');
+                exit;
+            } else {
+                // Gérer l'erreur de connexion
+                $error = "Identifiants invalides.";
+            }
+        }
+        include '../views/members/login.php'; // Chemin mis à jour
+    }
+    
     
 }
 ?>

@@ -18,9 +18,12 @@ switch ($url) {
         echo '<li><a href="/bibliotheque_app/public/admin/books">Gérer les livres</a></li>';
         echo '<li><a href="/bibliotheque_app/public/admin/authors">Gérer les auteurs</a></li>';
         echo '<li><a href="/bibliotheque_app/public/admin/members">Gérer les membres</a></li>';
+        echo '<li><a href="/bibliotheque_app/public/members/register">S\'inscrire</a></li>';
+        echo '<li><a href="/bibliotheque_app/public/members/login">Se connecter</a></li>';
         echo '</ul>';
         break;
 
+    // Les routes concernant les fonctionnalités admin
     case 'admin/books':
         $bookController->index();
         break;
@@ -69,8 +72,22 @@ switch ($url) {
         $memberController->delete($matches[1]);
         break;
 
+    // Les routes concernant les fonctionnalités de members
+    case 'members/register':
+        $memberController->register(); // Utilise la méthode register pour l'inscription
+        break;
+
+    case 'members/login':
+        $memberController->login(); // Affiche le formulaire de connexion
+        break;
+
+    case 'members/logout':
+        $memberController->logout(); // Déconnexion
+        break;
+
     default:
         echo '<h1>404 - Page non trouvée</h1>';
         break;
 }
+
 ?>
