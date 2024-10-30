@@ -60,22 +60,39 @@ class MemberController {
     
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupération des données POST
             $email = $_POST['email'];
             $password = $_POST['password'];
+    
+            // Vérification que les champs ne sont pas vides
+            if (empty($email) || empty($password)) {
+                $error = "Veuillez remplir tous les champs.";
+                include '../views/members/login.php'; // Chemin de la vue mis à jour
+                return; // Sortir pour éviter de continuer
+            }
+    
+            // Recherche du membre par email
             $member = $this->memberModel->findByEmail($email);
+    
+            // Vérification du mot de passe et de l'existence du membre
             if ($member && password_verify($password, $member['password'])) {
-                // Démarrer la session et rediriger
+                // Démarrer la session et enregistrer l'ID du membre
                 session_start();
                 $_SESSION['member_id'] = $member['id'];
-                header('Location: /bibliotheque_app/public/members/dashboard');
+    
+                // Redirection vers le tableau de bord du membre
+                header('Location: /bibliotheque_app/public/members/books');
                 exit;
             } else {
-                // Gérer l'erreur de connexion
+                // Gestion des erreurs d'identifiants incorrects
                 $error = "Identifiants invalides.";
             }
         }
-        include '../views/members/login.php'; // Chemin mis à jour
+    
+        // Inclure la vue de connexion avec éventuellement un message d'erreur
+        include '../views/members/login.php'; // Chemin de la vue mis à jour
     }
+    
     
     
 }

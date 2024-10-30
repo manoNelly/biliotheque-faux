@@ -36,5 +36,12 @@ class BookController {
         $this->bookModel->delete($id);
         header("Location: /bibliotheque_app/public/admin/books");
     }
+
+     // Méthode pour afficher les livres aux membres
+     public function memberIndex() {
+        // Utiliser la méthode pour obtenir les livres avec l'auteur
+        $books = $this->bookModel->findAllWithAuthor();
+        require '../views/members/books.php'; // Vue pour les membres
+    }
 }
 ?>

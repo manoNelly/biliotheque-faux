@@ -72,91 +72,6 @@ bibliotheque_app/
 │   │   ├── register.php           // Vue pour l'inscription des membres
 
 
-
-### Rapport sur l'état actuel du projet de gestion de bibliothèque
-
-**Introduction**  
-Le projet de gestion de bibliothèque a pour objectif de permettre aux administrateurs et aux membres de gérer les livres, auteurs, membres, et emprunts de manière efficace. Il est structuré selon l'architecture MVC et utilise la POO en PHP. Voici un état d'avancement détaillé basé sur les phases prévues.
-
----
-
-### **Phase 1 : Conception de la base de données et création des tables**  
-**Statut : Accomplie**
-
-1. **Analyse des besoins** : Les exigences fonctionnelles et techniques ont été clarifiées (gestion des livres, auteurs, membres, emprunts).
-2. **Conception du schéma relationnel** : Un schéma relationnel solide a été établi avec les tables *books*, *authors*, *members*, et *loans*.
-3. **Création des tables** : Les scripts SQL pour la création des tables sont prêts, avec des relations clés bien définies (ex. : cascade sur suppression pour les relations entre *books* et *authors*).
-4. **Test de la structure** : Les tests ont validé que la structure et les relations fonctionnent correctement.
-
----
-
-### **Phase 2 : Développement des fonctionnalités pour les administrateurs**  
-**Statut : Accomplie**
-
-1. **Interface d'administration** : Des pages pour ajouter, modifier et supprimer les livres, auteurs, et membres ont été créées dans le répertoire *views/admin/*.
-2. **Fonctionnalités CRUD** : Les fonctionnalités CRUD pour chaque entité (livres, auteurs, membres) sont implémentées et testées avec validation des données.
-3. **Tests fonctionnels** : Les tests ont été effectués, confirmant le bon fonctionnement des opérations CRUD et des pages associées.
-
----
-
-### **Phase 3 : Développement des fonctionnalités pour les membres**  
-**Statut : En cours**
-
-- **Création de l'interface utilisateur pour les membres** : En cours.
-  - Le répertoire *views/members/* a été créé avec les fichiers *login.php* et *register.php* pour gérer la connexion et l'inscription des membres.
-  - Il reste à concevoir les pages pour consulter les livres disponibles, emprunter des livres, et voir l'historique des emprunts.
-
-- **Inscription des membres** : En cours.
-  - Le formulaire d'inscription est à finaliser, avec la validation des données (nom, email, etc.).
-  - La logique de création d'un utilisateur dans le modèle *Member* est encore à implémenter.
-
-- **Connexion des membres** : En cours.
-  - Le formulaire de connexion existe dans *login.php*, mais il reste à finaliser la validation des identifiants et la gestion des sessions pour les membres.
-
-- **Consultation des livres** : Non commencé.
-  - Il faut développer une page permettant aux membres de consulter et de rechercher des livres disponibles dans la bibliothèque.
-
-- **Fonctionnalités d'emprunt** : Non commencé.
-  - Il faudra implémenter la fonctionnalité d'emprunt via un formulaire ou bouton pour que les membres puissent emprunter des livres, en gérant les vérifications (livres déjà empruntés, etc.).
-
-- **Historique des emprunts** : Non commencé.
-  - La page d'historique des emprunts doit encore être développée pour permettre aux membres de voir leurs emprunts passés.
-
-- **Tests fonctionnels** : À réaliser une fois les fonctionnalités terminées.
-
----
-
-### **Phase 4 : Tests et débogage**  
-**Statut : À venir**
-
-- Tests unitaires et d'intégration à réaliser après le développement complet des fonctionnalités pour les membres.
-- Tests utilisateurs pour recueillir des retours et ajuster les fonctionnalités si nécessaire.
-- Débogage et optimisation prévus dans cette phase.
-
----
-
-### **Phase 5 : Mise en ligne et maintenance**  
-**Statut : À venir**
-
-- Le déploiement de l'application sur un serveur web, la configuration du serveur, la documentation et le suivi post-lancement sont prévus après la phase de tests et de débogage.
-
----
-
-### **Résumé des étapes restantes :**
-- Finaliser les fonctionnalités d'inscription et de connexion des membres (Phase 3).
-- Développer les pages de consultation des livres, emprunt de livres et historique des emprunts pour les membres (Phase 3).
-- Effectuer des tests fonctionnels et corrections (Phase 4).
-- Mettre en ligne l'application et assurer la maintenance (Phase 5).
-
----
-
-**Conclusion**  
-Le projet a bien progressé, avec les deux premières phases accomplies. La phase actuelle (Phase 3) est en cours, avec des bases solides pour les fonctionnalités membres. Il reste des développements à réaliser pour les interactions des membres avec les livres et leurs emprunts. Une fois ces fonctionnalités finalisées, les phases de tests et de mise en ligne pourront commencer.
-
-
-
-
-
 ---
 
 ## Cahier des charges du projet : Gestion de Bibliothèque
@@ -254,6 +169,34 @@ L'application sera construite sur l'architecture MVC (Modèle-Vue-Contrôleur), 
 ### 10. **Conclusion**
 Ce cahier des charges définit les aspects clés du projet de gestion de bibliothèque. Il servira de référence pour le développement et les tests, garantissant que toutes les fonctionnalités essentielles sont mises en œuvre conformément aux exigences définies.
 
---- 
 
-N'hésite pas à ajuster ce document en fonction de tes besoins spécifiques ou des détails supplémentaires que tu souhaites ajouter. Si tu as besoin d'autres sections ou d'informations, fais-le moi savoir !
+### Récapitulatif :
+
+1. **Inscription et Connexion des Membres** :
+   - Les fichiers `register.php` et `login.php` sont en place et fonctionnels, permettant la création d'un nouveau membre.
+   - La gestion des sessions a été implémentée avec succès pour garder les membres connectés après leur authentification.
+   - Les messages d'erreurs pour les champs vides ou identifiants incorrects sont gérés.
+   - La validation des données n'a pas encore été réalisée, mais sera revue ultérieurement pour renforcer la sécurité du site.
+
+2. **Consultation des livres par les membres** :
+   - Le système d'affichage des livres est en place.
+   - Une route dédiée (`members/books`) a été ajoutée pour permettre aux membres de consulter les livres disponibles.
+   - La page de consultation des livres par les membres affiche correctement la liste des livres, avec une mise en page simple.
+
+### Ce qui reste à faire :
+
+1. **Validation des données** :
+   - Implémenter une validation plus stricte pour l'inscription et la connexion (vérification des formats d'email, sécurité des mots de passe).
+
+2. **Consultation des livres par les membres** (complément) :
+   - Ajouter des options de recherche ou de filtrage des livres (par titre, auteur, genre) pour améliorer l'expérience utilisateur.
+
+3. **Emprunt de livres** :
+   - Développer la fonctionnalité pour permettre aux membres d'emprunter un livre depuis la page de consultation.
+   - Gérer les vérifications (disponibilité du livre, restrictions éventuelles liées aux emprunts en cours).
+
+4. **Historique des emprunts des membres** :
+   - Créer une page pour afficher l'historique des emprunts de chaque membre.
+   - Récupérer les informations depuis la base de données pour les afficher clairement.
+
+Le prochain objectif est de développer la fonctionnalité d'emprunt de livres pour les membres.

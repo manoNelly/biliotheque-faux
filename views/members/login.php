@@ -9,6 +9,11 @@
 
 <h1>Connexion</h1>
 
+<!-- Affichage des messages d'erreur s'ils existent -->
+<?php if (isset($error)) : ?>
+    <p style="color:red;"><?= $error; ?></p>
+<?php endif; ?>
+
 <form action="/bibliotheque_app/public/members/login" method="POST">
     <label for="email">Email :</label>
     <input type="email" name="email" id="email" required>

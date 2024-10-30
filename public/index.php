@@ -84,6 +84,11 @@ switch ($url) {
     case 'members/logout':
         $memberController->logout(); // Déconnexion
         break;
+    
+        // Ajout de la route pour afficher les livres aux membres
+    case 'members/books':
+        $bookController->memberIndex(); // Affiche la liste des livres pour les membres
+        break;
 
     default:
         echo '<h1>404 - Page non trouvée</h1>';

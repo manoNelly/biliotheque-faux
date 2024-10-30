@@ -32,5 +32,15 @@ class Book {
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+     // Récupérer tous les livres avec l'information de l'auteur
+     public function findAllWithAuthor() {
+        $stmt = $this->db->query("
+            SELECT books.id, books.title, authors.name AS author, books.genre, books.published_year
+            FROM books
+            INNER JOIN authors ON books.author_id = authors.id
+        ");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
